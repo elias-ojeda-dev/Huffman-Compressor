@@ -33,7 +33,6 @@ class HuffmanCompressor:
     
     def __init__(self):
         self.codes: Dict[str, str] = {}
-        self.reverse_codes: Dict[str, str] = {}
     
     def _calculate_frequencies(self, data: bytes) -> Dict[int, int]:
         """Calculate frequency of each byte in the data."""
@@ -171,7 +170,7 @@ class HuffmanCompressor:
             pickle.dump(compressed_data, f)
         
         compressed_size = os.path.getsize(output_path)
-        compression_ratio = (1 - compressed_size / original_size) * 100 if original_size > 0 else 0
+        compression_ratio = (1 - compressed_size / original_size) * 100
         
         return original_size, compressed_size, compression_ratio
     
